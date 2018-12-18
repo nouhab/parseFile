@@ -1,6 +1,10 @@
 package parsefile;
 import java.util.Map;
-
+/**
+ * 
+ * @author nouha
+ * this class is an util to a map
+ */
 public class MapUtil {
 
 	public static <K> Integer incrementValue(Map<K, Integer> map, K key) {

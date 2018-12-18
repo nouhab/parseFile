@@ -1,19 +1,20 @@
 package parsefile;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
+/**
+ * 
+ * @author nouha
+ * Parse a file and extract informations
+ */
 
 public class ParseFile {
 
@@ -24,7 +25,7 @@ public class ParseFile {
 		this.fileName = fileName;
 	}
 
-	public String printConnectionReport(String serverName, String dateToParse) {
+	public String printConnectionReport(String serverName, String dateToParse) throws IOException {
 		String mostConnectedClient = "";
 		String mostRequestedServer= "";
 		// list of the connected servers to the specific server
@@ -85,15 +86,18 @@ public class ParseFile {
 							+ "\n Requested servers "+requestedServers);
 			
 			if (!clients.isEmpty()) {
+				
 				mostConnectedClient = MapUtil.getKeyWithMaxValue(clients);
 			}
 			if (!requestedServers.isEmpty()) {
+				
 				 mostRequestedServer = MapUtil.getKeyWithMaxValue(requestedServers);
 
 			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
+			 throw new IOException(e);
 		}
 		return mostConnectedClient+"***"+mostRequestedServer;
 

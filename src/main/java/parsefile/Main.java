@@ -1,5 +1,6 @@
 package parsefile;
 
+import java.io.IOException;
 
 public class Main {
 
@@ -9,7 +10,12 @@ public class Main {
 		String serverName = args[1];
 		String fileName = "/home/nouha/Bureau/t.txt";
 		ParseFile parseFile=new ParseFile(fileName);
-		parseFile.printConnectionReport(serverName, date);
+		try {
+			parseFile.printConnectionReport(serverName, date);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}
